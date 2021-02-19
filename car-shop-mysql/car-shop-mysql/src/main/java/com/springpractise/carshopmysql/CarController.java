@@ -1,5 +1,6 @@
 package com.springpractise.carshopmysql;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -7,13 +8,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "/carshop")
 public class CarController {
 
+    @Autowired
     private CarRepository carRepository;
-
-    public CarController() {}
-
-    public CarController(CarRepository carRepository) {
-        this.carRepository = carRepository;
-    }
 
     @GetMapping(path = "/all")
     public @ResponseBody Iterable<Car> getAllCars(){
