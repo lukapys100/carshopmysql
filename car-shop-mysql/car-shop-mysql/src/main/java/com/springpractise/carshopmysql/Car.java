@@ -19,6 +19,8 @@ public class Car {
 
     private Long cost;
 
+    private Status status;
+
     public Long getId() {
         return id;
     }
@@ -33,6 +35,10 @@ public class Car {
 
     public Long getCost() {
         return cost;
+    }
+
+    public Status getStatus() {
+        return status;
     }
 
     public void setId(Long id) {
@@ -51,6 +57,10 @@ public class Car {
         this.cost = cost;
     }
 
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     @Override
     public boolean equals(Object o) {
         if(this == o){
@@ -63,12 +73,13 @@ public class Car {
         return Objects.equals(this.id, car.id)
                 && Objects.equals(this.mark, car.mark)
                 && Objects.equals(this.model, car.model)
-                && Objects.equals(this.cost, car.cost);
+                && Objects.equals(this.cost, car.cost)
+                && Objects.equals(this.status, car.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.id, this.mark, this.model, this.cost);
+        return Objects.hash(this.id, this.mark, this.model, this.cost, this.status);
     }
 
     @Override
@@ -78,6 +89,7 @@ public class Car {
                 ", mark='" + mark + '\'' +
                 ", model='" + model + '\'' +
                 ", cost=" + cost +
+                ", status=" + status +
                 '}';
     }
 }
