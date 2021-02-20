@@ -14,14 +14,13 @@ public class CarModelAssembler implements RepresentationModelAssembler<Car,
     @Override
     public EntityModel<Car> toModel(Car car) {
         EntityModel<Car> carModel = EntityModel.of(car,
-                linkTo(methodOn(CarController.class).getAllCars()).withRel("cars"),
+                linkTo(methodOn(CarController.class).all()).withRel("cars"),
                 linkTo(methodOn(CarController.class).getCar(car.getId())).withSelfRel()
         );
 
         if(car.getStatus() == Status.IN_PROGRESS){
-                    carModel.add(linkTo(methodOn(CarController.class).cancel(car.getId())).withRel("cancel")),
-                    carModel.add(linkTo(methodOn(CarController.class).complete(car.getId())).withRel("complete")
-                    );
+                    carModel.add(linkTo(methodOn(CarController.class).cancel(car.getId())).withRel("cancel"));
+                    carModel.add(linkTo(methodOn(CarController.class).complete(car.getId())).withRel("complete"));
         }
         return carModel;
     }
